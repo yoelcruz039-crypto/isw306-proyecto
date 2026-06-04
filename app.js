@@ -47,7 +47,7 @@ function validarMensaje() {
     return true;
 }
 
-// 3. EVENTOS EN TIEMPO REAL (Limpian el estado visual mientras escribes)
+
 inputNombre.addEventListener('input', () => {
     if (inputNombre.value.trim().length >= 3) {
         feedback.className = "feedback-msg";
@@ -93,7 +93,7 @@ txtMensaje.addEventListener('input', () => {
 });
 
 form.addEventListener('submit', (event) => {
-    // Evitamos que la página se recargue (Requisito 2)
+    // Se evita que la página se recargue 
     event.preventDefault();
 
     // Validaciones robustas antes de procesar

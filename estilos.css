@@ -79,7 +79,7 @@ nav a:hover{
 }
 
 
-/* FORMULARIO */
+/* formulario */
 form{
     display:flex;
     flex-direction:column;
@@ -115,13 +115,13 @@ button:hover{
     transform:scale(1.05);
 }
 
-/* FOOTER */
+/* footer */
 footer{
     background:#041033;
     text-align:center;
     padding:20px;
     margin-top:40px;
-}/* RESPONSIVE */
+}/* responsive */
 
 @media(max-width:768px){
 
@@ -176,7 +176,7 @@ footer{
     border: 1px solid rgba(46, 213, 115, 0.2);
 }
 
-/* Bordes dinámicos para los inputs */
+
 .input-error {
     border: 2px solid #ff4d4d !important;
     outline: none;
@@ -187,7 +187,7 @@ footer{
     outline: none;
 }
 
-/* Suavizar el cambio de borde original */
+
 input, textarea {
     transition: border 0.3s ease;
     border: 2px solid transparent;
