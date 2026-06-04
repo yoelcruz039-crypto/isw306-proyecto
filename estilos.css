@@ -144,3 +144,51 @@ footer{
     }
 
 }
+/* feedback */
+
+.feedback-msg {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    min-height: 24px;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+
+.error-active {
+    opacity: 1;
+    transform: translateY(0);
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.1);
+    border: 1px solid rgba(255, 77, 77, 0.2);
+}
+
+.success-active {
+    opacity: 1;
+    transform: translateY(0);
+    color: #2ed573;
+    background: rgba(46, 213, 115, 0.1);
+    border: 1px solid rgba(46, 213, 115, 0.2);
+}
+
+/* Bordes dinámicos para los inputs */
+.input-error {
+    border: 2px solid #ff4d4d !important;
+    outline: none;
+}
+
+.input-success {
+    border: 2px solid #2ed573 !important;
+    outline: none;
+}
+
+/* Suavizar el cambio de borde original */
+input, textarea {
+    transition: border 0.3s ease;
+    border: 2px solid transparent;
+}
