@@ -39,10 +39,14 @@
         <section id="contacto" class="card formulario">
             <h2>Formulario de Contacto</h2>
 
-            <form>
-                <input type="text" placeholder="Nombre">
-                <input type="email" placeholder="Correo">
-                <textarea placeholder="Mensaje"></textarea>
+            <!-- Le agregamos un ID al formulario -->
+            <form id="formContacto" novalidate>
+                <input type="text" id="nombre" placeholder="Nombre">
+                <input type="text" id="correo" placeholder="Correo">
+                <textarea id="mensaje" placeholder="Mensaje"></textarea>
+                
+                <div id="mensajeFeedback" class="feedback-msg"></div>
+
                 <button type="submit">Enviar</button>
             </form>
         </section>
@@ -54,9 +58,6 @@
         <p>© 2026 Mi Aplicación Web</p>
     </footer>
 
+    <script src="app.js"></script>
 </body>
-body{
-    background:linear-gradient(to bottom,#07153a,#020d24);
-    color:white;
-}
 </html>
