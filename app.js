@@ -92,7 +92,7 @@ txtMensaje.addEventListener('input', () => {
     }
 });
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
     // Se evita que la página se recargue 
     event.preventDefault();
 
@@ -108,11 +108,31 @@ form.addEventListener('submit', (event) => {
         fecha: new Date().toLocaleString()
     };
 
-    mensajesGuardados.push(nuevoMensaje);
-    localStorage.setItem('mensajesWeb', JSON.stringify(mensajesGuardados));
+try {
 
-    feedback.textContent = "¡Formulario enviado y guardado con éxito!";
+    const respuesta = await fetch(
+        "http://localhost:3000/contacto",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(nuevoMensaje)
+        }
+    );
+
+    const datos = await respuesta.json();
+
+    feedback.textContent = datos.mensaje;
     feedback.className = "feedback-msg success-active";
 
     form.reset();
+
+} catch (error) {
+
+    feedback.textContent = "Error al enviar el formulario.";
+    feedback.className = "feedback-msg error-active";
+
+    console.log(error);
+}
 });
