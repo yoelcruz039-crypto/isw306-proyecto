@@ -4,9 +4,6 @@ const inputCorreo = document.getElementById('correo');
 const txtMensaje = document.getElementById('mensaje');
 const feedback = document.getElementById('mensajeFeedback');
 
-let mensajesGuardados = JSON.parse(localStorage.getItem('mensajesWeb')) || [];
-
-// FUNCIONES MODULARES 
 function validarNombre() {
     if (inputNombre.value.trim().length < 3) {
         feedback.textContent = "El nombre debe tener al menos 3 caracteres.";
@@ -47,29 +44,6 @@ function validarMensaje() {
     return true;
 }
 
-
-inputNombre.addEventListener('input', () => {
-    if (inputNombre.value.trim().length >= 3) {
-        feedback.className = "feedback-msg";
-        inputNombre.classList.remove('input-error');
-    }
-});
-
-inputCorreo.addEventListener('input', () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailRegex.test(inputCorreo.value.trim())) {
-        feedback.className = "feedback-msg";
-        inputCorreo.classList.remove('input-error');
-    }
-});
-
-txtMensaje.addEventListener('input', () => {
-    if (txtMensaje.value.trim() !== "") {
-        feedback.className = "feedback-msg";
-        txtMensaje.classList.remove('input-error');
-    }
-});
-
 inputNombre.addEventListener('input', () => {
     if (inputNombre.value.trim().length >= 3) {
         feedback.className = "feedback-msg";
@@ -93,46 +67,38 @@ txtMensaje.addEventListener('input', () => {
 });
 
 form.addEventListener('submit', async (event) => {
-    // Se evita que la página se recargue 
     event.preventDefault();
 
-    // Validaciones robustas antes de procesar
     if (!validarNombre() || !validarCorreo() || !validarMensaje()) {
-        return; 
+        return;
     }
 
     const nuevoMensaje = {
         nombre: inputNombre.value.trim(),
         correo: inputCorreo.value.trim(),
-        mensaje: txtMensaje.value.trim(),
-        fecha: new Date().toLocaleString()
+        mensaje: txtMensaje.value.trim()
     };
 
-try {
-
-    const respuesta = await fetch(
-        "http://localhost:3000/contacto",
-        {
+    try {
+        const respuesta = await fetch("http://localhost:3000/contacto", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(nuevoMensaje)
-        }
-    );
+        });
 
-    const datos = await respuesta.json();
+        const datos = await respuesta.json();
 
-    feedback.textContent = datos.mensaje;
-    feedback.className = "feedback-msg success-active";
+        feedback.textContent = datos.mensaje;
+        feedback.className = "feedback-msg success-active";
 
-    form.reset();
+        form.reset();
+        [inputNombre, inputCorreo, txtMensaje].forEach((campo) => {
+            campo.classList.remove('input-success', 'input-error');
+        });
 
-} catch (error) {
-
-    feedback.textContent = "Error al enviar el formulario.";
-    feedback.className = "feedback-msg error-active";
-
-    console.log(error);
-}
+    } catch (error) {
+        feedback.textContent = "Error al enviar el formulario. ¿El servidor está corriendo?";
+        feedback.className = "feedback-msg error-active";
+        console.log(error);
+    }
 });

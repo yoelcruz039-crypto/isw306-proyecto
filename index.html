@@ -3,60 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi App Web</title>
+    <title>Mi App Web — Grupo 8</title>
+
+    <!-- Bootstrap 5 (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Nuestros estilos propios, después de Bootstrap para poder sobreescribir si hace falta -->
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <!-- ENCABEZADO -->
+    <!-- ENCABEZADO / NAVBAR -->
     <header>
-        <h1>Mi App Web</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#inicio">Mi App Web</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#inicio">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#perfil">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contacto">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Administración</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- MENÚ -->
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#perfil">Perfil</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-
     <!-- CONTENIDO -->
-    <main>
+    <main class="container my-5">
 
         <!-- BIENVENIDA -->
-        <section id="inicio" class="card">
-            <h2>Bienvenido</h2>
-            <p>Esta es mi aplicación web tipo sistema.</p>
+        <section id="inicio" class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">Bienvenido</h2>
+                <p class="card-text">Esta es mi aplicación web tipo sistema.</p>
+            </div>
         </section>
 
         <!-- PERFIL -->
-        <section id="perfil" class="card">
-            <h2>Perfil</h2>
-            <p>Aquí irá tu información personal.</p>
+        <section id="perfil" class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">Perfil</h2>
+                <p class="card-text">Aquí irá tu información personal.</p>
+            </div>
         </section>
 
         <!-- FORMULARIO -->
-        <section id="contacto" class="card formulario">
-            <h2>Formulario de Contacto</h2>
+        <section id="contacto" class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title mb-3">Formulario de Contacto</h2>
 
-          
-            <form id="formContacto" novalidate>
-                <input type="text" id="nombre" placeholder="Nombre">
-                <input type="text" id="correo" placeholder="Correo">
-                <textarea id="mensaje" placeholder="Mensaje"></textarea>
-                
-                <div id="mensajeFeedback" class="feedback-msg"></div>
+                <form id="formContacto" novalidate>
 
-                <button type="submit">Enviar</button>
-            </form>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Tu nombre completo">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Correo</label>
+                        <input type="text" class="form-control" id="correo" placeholder="tucorreo@ejemplo.com">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+                    </div>
+
+                    <div id="mensajeFeedback" class="feedback-msg mb-3"></div>
+
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
         </section>
 
     </main>
 
     <!-- FOOTER -->
-    <footer>
-        <p>© 2026 Mi Aplicación Web - Grupo 8</p>
+    <footer class="text-center py-4 bg-dark text-white-50">
+        <p class="mb-0">© 2026 Mi Aplicación Web - Grupo 8</p>
     </footer>
+
+    <!-- Bootstrap JS (necesario para el menú responsive) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="app.js"></script>
 </body>
