@@ -5,7 +5,7 @@
     font-family: Arial, sans-serif;
 }
 
-;body{
+body{
     background:linear-gradient(to bottom,#07153a,#020d24);
     color:white;
 }
@@ -198,4 +198,30 @@ footer{
 input, textarea {
     transition: border 0.3s ease;
     border: 2px solid transparent;
+}
+
+.text-muted {
+    color: white !important;
+}
+
+.login-link {
+    color: white;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    color: #f58220;
+    text-decoration: underline;
+}
+
+.login-label {
+    font-weight: 600;
+}
+
+.login-title{
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
 }
